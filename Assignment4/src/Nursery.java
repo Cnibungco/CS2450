@@ -88,6 +88,8 @@ public class Nursery extends Application {
 		
 		Image dog1Image = new Image("file:Pictures/dog1.jpg");
 		ImageView dog1ImageView = new ImageView(dog1Image);
+		dog1ImageView.setFitHeight(500);
+		dog1ImageView.setFitWidth(500);
 		
 		Label goldenRetreverLabel = new Label("Golden Retriever (Jason)");
 		goldenRetreverLabel.setStyle("-fx-font-size:35; -fx-text-fill:#6eb7e5");
@@ -113,7 +115,37 @@ public class Nursery extends Application {
 		dog1HBox.setPadding(new Insets(20));
 		
 		
-		VBox bodyVBox = new VBox(dog1HBox);
+		Image dog2Image = new Image("file:Pictures/dog2.jpg");
+		ImageView dog2ImageView = new ImageView(dog2Image);
+		dog2ImageView.setFitHeight(500);
+		dog2ImageView.setFitWidth(500);
+		
+		
+		Label shibaLabel = new Label("Shiba Inu (Orion)");
+		shibaLabel.setStyle("-fx-font-size:35; -fx-text-fill:#6eb7e5");
+		//goldenRetreverLabel.setFont(new Font(50));
+		Text dog2Description = new Text("The Shiba is the smallest of the Japanese native breeds of dog and was\noriginally developed for hunting by sight and scent in the dense undergrowth\nof Japan’s mountainous areas. Alert and agile with keen senses, he is also an\nexcellent watchdog and companion. His frame is compact with well-developed\nmuscles. Males and females are distinctly different in appearance: males are\nmasculine without coarseness, females are feminine without weakness of\nstructure.");
+		dog2Description.setFont(new Font(20));
+		
+		Text dog2NationalCity = new Text("Name :\tOrion\nAge :\t10 Week\nBreed :\tShiba Inu\nDOB :\t02-16-2019\nWeight :\t6 lbs 2 oz\nGender :\tMale\nID :\t\t7538B");
+		dog2NationalCity.setStyle("-fx-font-size:20");
+		
+		Button dog2RequestButton = new Button("My Puppy Request Now!");
+		dog2RequestButton.setMinWidth(400);
+		//dog1RequestButton.setStyle("-fx-background-color:#3da8ce");
+		
+		VBox dog2NationalCityVBox = new VBox(dog2NationalCity);
+		dog2NationalCityVBox.setPadding(new Insets(10));
+		dog2NationalCityVBox.setStyle("-fx-background-color:#dee9ed");
+		
+		VBox dog2DesVBox = new VBox(20, shibaLabel, dog2Description,dog2NationalCityVBox, dog2RequestButton);
+		
+		HBox dog2HBox = new HBox(20, dog2ImageView, dog2DesVBox);
+		dog2HBox.setPadding(new Insets(20));
+		
+		
+		
+		VBox bodyVBox = new VBox(10, dog1HBox, dog2HBox);
 		
 		ScrollPane scrollPane = new ScrollPane(bodyVBox);
 		scrollPane.setFitToHeight(true);
