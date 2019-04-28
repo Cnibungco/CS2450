@@ -6,7 +6,12 @@ import javafx.stage.Stage;
 
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Font;
+import javafx.scene.text.Text;
 import javafx.scene.control.Label;
+import javafx.scene.control.ScrollPane;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.control.Button;
 
 
@@ -37,9 +42,9 @@ public class Nursery extends Application {
 		
 		
 		Label name1 = new Label("Seberians of");
-		name1.setStyle("-fx-font-size:30; -fx-text-fill:#14265b");
+		name1.setStyle("-fx-font-size:35; -fx-text-fill:#14265b");
 		Label name2 = new Label("the Heartland");
-		name2.setStyle("-fx-font-size:30; -fx-text-fill:#14265b");
+		name2.setStyle("-fx-font-size:35; -fx-text-fill:#14265b");
 		VBox nameVBox = new VBox(name1, name2);
 		
 		Button homeButton = new Button("Home");
@@ -71,9 +76,50 @@ public class Nursery extends Application {
 		tabHBox.setAlignment(Pos.CENTER_RIGHT);
 				
 		HBox header2 = new HBox (120, nameVBox, tabHBox);
-		header2.setPadding(new Insets(10));
+		header2.setPadding(new Insets(15));
 		
-		VBox vbox = new VBox(header1, header2);
+		Label availablePuppies = new Label("Available Puppies");
+		availablePuppies.setStyle("-fx-font-size:40; -fx-text-fill:#ef709b");
+		HBox availablePuppiesHBox = new HBox(availablePuppies);
+		availablePuppiesHBox.setStyle("-fx-background-color:#e3eaea");
+		availablePuppiesHBox.setAlignment(Pos.CENTER);
+		availablePuppiesHBox.setPadding(new Insets(10));
+		
+		
+		Image dog1Image = new Image("file:Pictures/dog1.jpg");
+		ImageView dog1ImageView = new ImageView(dog1Image);
+		
+		Label goldenRetreverLabel = new Label("Golden Retriever (Jason)");
+		goldenRetreverLabel.setStyle("-fx-font-size:35; -fx-text-fill:#6eb7e5");
+		//goldenRetreverLabel.setFont(new Font(50));
+		Text dog1Description = new Text("A symmetrical, powerful, active dog, sound and well put together, not clumsy \nnor long in the leg, displaying a kindly expression and possessing a \npersonality that is eager, alert and self-confident. Primarily a hunting dog, he\nshould be shown in hard working condition. Overall appearance, balance, gait \nand purpose to be given more emphasis than any of his component parts. \nFaults–Any departure from the described ideal shall be considered faulty to\nthe degree to which it interferes with the breed’s purpose or is contrary to\nbreed character.");
+		dog1Description.setFont(new Font(20));
+		
+		
+		Text dog1NationalCity = new Text("Name :\tJason\nAge :\t8 Week\nBreed :\tGolden Retriever\nDOB :\t02-18-2019\nWeight :\nGender :\tMale\nID :\t\t8667N");
+		dog1NationalCity.setStyle("-fx-font-size:20");
+		
+		Button dog1RequestButton = new Button("My Puppy Request Now!");
+		dog1RequestButton.setMinWidth(400);
+		//dog1RequestButton.setStyle("-fx-background-color:#3da8ce");
+		
+		VBox dog1NationalCityVBox = new VBox(dog1NationalCity);
+		dog1NationalCityVBox.setPadding(new Insets(10));
+		dog1NationalCityVBox.setStyle("-fx-background-color:#dee9ed");
+		
+		VBox dog1DesVBox = new VBox(20, goldenRetreverLabel, dog1Description,dog1NationalCityVBox, dog1RequestButton);
+		
+		HBox dog1HBox = new HBox(20, dog1ImageView, dog1DesVBox);
+		dog1HBox.setPadding(new Insets(20));
+		
+		
+		VBox bodyVBox = new VBox(dog1HBox);
+		
+		ScrollPane scrollPane = new ScrollPane(bodyVBox);
+		scrollPane.setFitToHeight(true);
+		
+		VBox vbox = new VBox(header1, header2, availablePuppiesHBox, scrollPane);
+		scrollPane.setFitToHeight(true);
 		Scene scene = new Scene(vbox);
 		primaryStage.setScene(scene);
 		primaryStage.show();
