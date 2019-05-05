@@ -9,6 +9,9 @@ import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.scene.control.Label;
+import javafx.scene.control.Menu;
+import javafx.scene.control.MenuBar;
+import javafx.scene.control.MenuItem;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -16,6 +19,20 @@ import javafx.scene.control.Button;
 
 
 public class Nursery extends Application {
+	
+	private MenuBar menuBar;
+	private Menu homeItem;
+	private Menu aboutUs;
+	private Menu dogsAvailable;
+	private Menu gallery;
+	private Menu contactUs;
+	
+	private MenuItem ranchHistory;
+	private MenuItem kennels;
+	private MenuItem puppies;
+	private MenuItem adults;
+	private MenuItem locationArea;
+	private MenuItem map;
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
@@ -41,7 +58,7 @@ public class Nursery extends Application {
 		header1.setStyle("-fx-background-color:#7cbcbb");
 		
 		
-		Label name1 = new Label("Seberians of");
+		Label name1 = new Label("Siberians of");
 		name1.setStyle("-fx-font-size:35; -fx-text-fill:#14265b");
 		Label name2 = new Label("the Heartland");
 		name2.setStyle("-fx-font-size:35; -fx-text-fill:#14265b");
@@ -74,9 +91,30 @@ public class Nursery extends Application {
 		
 		HBox tabHBox = new HBox(homeButton, nurseryButton, first8WeeksButton, heartlandAdultsButton, adultsForSaleButton, puppyGaleeryButton, kennelsButton, ranchHistoryButton, shotsFAQButton, contactButton, ourArea, commnetsButton);
 		tabHBox.setAlignment(Pos.CENTER_RIGHT);
+		
+		menuBar = new MenuBar();
+		homeItem = new Menu("Home");
+		aboutUs = new Menu("About Us");
+		dogsAvailable = new Menu("Dogs Available");
+		gallery = new Menu("Gallery");
+		contactUs = new Menu("Contact Us");
+		menuBar.getMenus().add(homeItem);
+		menuBar.getMenus().add(aboutUs);
+		menuBar.getMenus().add(dogsAvailable);
+		menuBar.getMenus().add(gallery);
+		menuBar.getMenus().add(contactUs);
+		HBox menuHBox = new HBox(menuBar);
+		menuHBox.setAlignment(Pos.CENTER_RIGHT);
+		
+		buildAboutUsMenu();
+		buildDogsAvailableMenu();
+		buildContactUsMenu();
+		
 				
-		HBox header2 = new HBox (120, nameVBox, tabHBox);
+		HBox header2 = new HBox (120, nameVBox, menuHBox);
 		header2.setPadding(new Insets(15));
+		
+		
 		
 		Label availablePuppies = new Label("Available Puppies");
 		availablePuppies.setStyle("-fx-font-size:40; -fx-text-fill:#ef709b");
@@ -91,14 +129,14 @@ public class Nursery extends Application {
 		dog1ImageView.setFitHeight(500);
 		dog1ImageView.setFitWidth(500);
 		
-		Label goldenRetreverLabel = new Label("Golden Retriever (Jason)");
-		goldenRetreverLabel.setStyle("-fx-font-size:35; -fx-text-fill:#6eb7e5");
+		Label dog1Label = new Label("Siberian Husky (Maggie)");
+		dog1Label.setStyle("-fx-font-size:35; -fx-text-fill:#6eb7e5");
 		//goldenRetreverLabel.setFont(new Font(50));
-		Text dog1Description = new Text("A symmetrical, powerful, active dog, sound and well put together, not clumsy \nnor long in the leg, displaying a kindly expression and possessing a \npersonality that is eager, alert and self-confident. Primarily a hunting dog, he\nshould be shown in hard working condition. Overall appearance, balance, gait \nand purpose to be given more emphasis than any of his component parts. \nFaults–Any departure from the described ideal shall be considered faulty to\nthe degree to which it interferes with the breed’s purpose or is contrary to\nbreed character.");
+		Text dog1Description = new Text("The Siberian Husky is a medium-sized working dog, quick and light on his feet and free\nand graceful in action. His moderately compact and well furred body, erect ears and brush\ntail suggest his Northern heritage. His characteristic gait is smooth and seemingly\neffortless. He performs his original function in harness most capably, carrying a light load\nat a moderate speed over great distances. His body proportions and form reflect this\nbasic balance of power, speed and endurance.\n");
 		dog1Description.setFont(new Font(20));
 		
 		
-		Text dog1NationalCity = new Text("Name :\tJason\nAge :\t8 Week\nBreed :\tGolden Retriever\nDOB :\t02-18-2019\nWeight :\nGender :\tMale\nID :\t\t8667N");
+		Text dog1NationalCity = new Text("Name :\tMaggie\nAge :\t10 Week\nBreed :\tSiberian Husky\nDOB :\t02-21-2019\nWeight :\nGender :\tFemale\nID :\t\t1882B");
 		dog1NationalCity.setStyle("-fx-font-size:20");
 		
 		Button dog1RequestButton = new Button("My Puppy Request Now!");
@@ -109,11 +147,12 @@ public class Nursery extends Application {
 		dog1NationalCityVBox.setPadding(new Insets(10));
 		dog1NationalCityVBox.setStyle("-fx-background-color:#dee9ed");
 		
-		VBox dog1DesVBox = new VBox(20, goldenRetreverLabel, dog1Description,dog1NationalCityVBox, dog1RequestButton);
+		VBox dog1DesVBox = new VBox(20, dog1Label, dog1Description,dog1NationalCityVBox, dog1RequestButton);
 		
 		HBox dog1HBox = new HBox(20, dog1ImageView, dog1DesVBox);
 		dog1HBox.setPadding(new Insets(20));
-		
+
+	/*********************************************/
 		
 		Image dog2Image = new Image("file:Pictures/dog2.jpg");
 		ImageView dog2ImageView = new ImageView(dog2Image);
@@ -145,6 +184,8 @@ public class Nursery extends Application {
 		
 		
 		
+		
+		
 		VBox bodyVBox = new VBox(10, dog1HBox, dog2HBox);
 		
 		ScrollPane scrollPane = new ScrollPane(bodyVBox);
@@ -157,6 +198,34 @@ public class Nursery extends Application {
 		primaryStage.show();
 		
 		
+	}
+
+	private void buildContactUsMenu() {
+		locationArea = new MenuItem("Location/Our Area");
+		map = new MenuItem("Map");
+		
+		contactUs.getItems().add(locationArea);
+		contactUs.getItems().add(map);
+		
+	}
+
+	private void buildAboutUsMenu() {
+		
+		ranchHistory = new MenuItem("Ranch History");
+		kennels = new MenuItem("Kennels");
+		
+		aboutUs.getItems().add(ranchHistory);
+		aboutUs.getItems().add(kennels);
+		
+		
+	}
+	
+	private void buildDogsAvailableMenu() {
+		puppies = new MenuItem("Puppies");
+		adults = new MenuItem("Adults");
+		
+		dogsAvailable.getItems().add(puppies);
+		dogsAvailable.getItems().add(adults);
 	}
 
 }
