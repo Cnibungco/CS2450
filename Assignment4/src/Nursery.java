@@ -194,6 +194,7 @@ public class Nursery extends Application {
 		VBox vbox = new VBox(header1, header2, availablePuppiesHBox, scrollPane);
 		scrollPane.setFitToHeight(true);
 		Scene scene = new Scene(vbox);
+		scene.getStylesheets().add("mystyles.css");
 		primaryStage.setScene(scene);
 		primaryStage.show();
 		

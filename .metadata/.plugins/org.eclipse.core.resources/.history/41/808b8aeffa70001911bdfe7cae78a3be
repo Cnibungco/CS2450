@@ -1,0 +1,16 @@
+.menu {
+    -fx-font-size:15 ;
+    -fx-text-fill: #ffffff;
+
+    -fx-font-family: "Futura-pt";
+    -fx-alignment: center;
+    -fx-pref-width: 200;
+    -fx-pref-height: 50;
+    -fx-wrap-text: true;
+   
+}
+
+.menu-bar {
+    -fx-background-color:  #7cbcbb;
+
+}
