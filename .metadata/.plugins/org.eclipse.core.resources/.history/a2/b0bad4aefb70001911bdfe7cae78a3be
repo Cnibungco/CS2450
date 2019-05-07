@@ -5,7 +5,7 @@
     -fx-font-family: "Futura-pt";
     -fx-alignment: center;
     -fx-pref-width: 200;
-    -fx-pref-height: 60;
+    -fx-pref-height: 50;
     -fx-wrap-text: true;
    
 }
